@@ -1,0 +1,15 @@
+[Unit]
+Description=SenseHat MQTT Service
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/SenseHat-MQTT.py
+Restart=always
+User=pi
+Group=pi
+Environment=PATH=/usr/bin:/usr/local/bin
+WorkingDirectory=/home/pi
+
+[Install]
+WantedBy=multi-user.target
+
+
