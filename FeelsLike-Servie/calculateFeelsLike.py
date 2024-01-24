@@ -2,10 +2,10 @@ import paho.mqtt.client as mqtt
 import json
 
 # MQTT Einstellungen
-broker = "5d4607be694c4b98bdfdab8fd5f11847.s2.eu.hivemq.cloud"
+broker = "" # Eingeben der Broker URL
 port = 8883
-username = "raspi_all"
-password = "Raspi_all1"
+username = "" # Eingeben des Benutzernamen
+password = "" # Eingeben des Passworts
 
 # Globale Variablen für die Sensordaten des ersten Sensors
 temperature_in = None
