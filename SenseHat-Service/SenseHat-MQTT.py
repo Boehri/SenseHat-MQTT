@@ -8,10 +8,10 @@ import os
 sense = SenseHat()
 
 # HiveMQ Cloud Broker Einstellungen
-broker = "5d4607be694c4b98bdfdab8fd5f11847.s2.eu.hivemq.cloud"
+broker = "" # Eingeben der Broker URL
 port = 8883
-username = "raspi_pub" 
-password = "Raspi_pub1"
+username = "" # Eingeben des Benutzernamens
+password = "" #  Eingeben des Passworts
 
 # Erstellen des MQTT Clients
 client = mqtt.Client()
@@ -31,6 +31,7 @@ def get_corrected_temp(raw_temp):
     corrected_temp = raw_temp - ((cpu_temp - raw_temp) / 1.5)
     return corrected_temp
 
+# Funktion zur Berechnung der korrigierten Temperatur
 def get_corrected_humi(raw_humi): 
     corrected_humi = raw_humi + 10
     return corrected_humi
