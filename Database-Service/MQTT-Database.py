@@ -8,15 +8,15 @@ import time
 # HiveMQ Cloud Broker Einstellungen
 broker = "5d4607be694c4b98bdfdab8fd5f11847.s2.eu.hivemq.cloud"
 port = 8883
-username = "raspi_all"  # Ersetzen Sie dies durch Ihren Benutzernamen
-password = "Raspi_all1"  # Ersetzen Sie dies durch Ihr Passwort
+username = "" # Ersetzen durch Benutzernamen
+password = ""  # Ersetzen durch Passwort
 
 # MongoDB Atlas Verbindungsdetails
-uri = "mongodb+srv://MQTT_TEMP:MQTT_TEMP@tempdata.ky889by.mongodb.net/?retryWrites=true&w=majority"  # Ersetzen Sie dies durch Ihr>
-database_name = "TempData"  # Name Ihrer Datenbank
-collection_name = "TimestampData"  # Name Ihrer Sammlung (Collection)
+uri = ""  # Ersetzen durch MongoDB ID
+database_name = ""  # Name der Datenbank
+collection_name = ""  # Name der Sammlung (Collection)
 
-# Erstellen Sie einen neuen MongoClient und verbinden Sie sich mit dem Server
+# Erstellen eines neuen MongoClient und aufbauen der Verbindung mit dem Server
 mongo_client = MongoClient(uri, server_api=ServerApi('1'))
 db = mongo_client[database_name]
 collection = db[collection_name]
@@ -39,7 +39,7 @@ data_cache = {
 # Funktion, um Daten in die Datenbank zu schreiben
 def write_to_db():
     while True:
-        time.sleep(60)  # 60 Sekunden warten
+        time.sleep(60) 
         current_time = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
         data_to_insert = {
             "timestamp": current_time,
@@ -63,7 +63,8 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("raspi/in/humi")
     client.subscribe("raspi/in/press")
     client.subscribe("raspi/in/temp/feelsLike")
-
+    
+#Schreiben der empfangenen Daten in den Cache
 def on_message(client, userdata, msg):
     print(f"Nachricht erhalten: {msg.topic} {str(msg.payload)}")
     try:
