@@ -1,0 +1,14 @@
+[Unit]
+Description=Boot and Reboot averageData Service
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/
+ExecStart=/usr/bin/python3 /home/pi/averageData.py
+Restart=on-failure
+RestartSec=20
+
+[Install]
+WantedBy=multi-user.target
