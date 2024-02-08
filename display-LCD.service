@@ -1,0 +1,17 @@
+[Unit]
+Description=displaySub Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/pi/displaySub.py
+Restart=on-failure
+User=pi
+Group=pi
+Environment=PATH=/usr/bin:/usr/local/bin
+WorkingDirectory=/home/pi
+Environment="DISPLAY=:0"
+
+[Install]
+WantedBy=multi-user.target
